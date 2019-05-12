@@ -1,0 +1,25 @@
+author: M.Mueller-Spaeth "mamuesp" <fms1961@gmail.com>
+type: lib
+description: A stroboscope with RGB LEDs
+version: 1.0
+
+sources:
+  - src
+
+filesystem:
+  - fs
+
+config_schema:
+  - ["ledeffects.strobe", "o", {title: ""}] 
+  - ["ledeffects.strobe.timeout", "i", 35, {title: ""}]
+  - ["ledeffects.strobe.pause", "i", 20, {title: ""}]
+  - ["ledeffects.strobe.loops", "i", 30, {title: ""}]
+  - ["ledeffects.strobe.value", "d", 0.6, {title: ""}]
+  - ["ledeffects.strobe.dim_all", "d", 0.55, {title: "Dimming of the LED over all colors"}]
+
+libs:
+
+tags:
+  - c
+
+manifest_version: 2017-09-29
