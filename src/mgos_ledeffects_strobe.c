@@ -36,7 +36,7 @@ static void mgos_intern_strobe_loop(mgos_rgbleds* leds)
     if (loops-- > 0) {
         LOG(LL_VERBOSE_DEBUG, ("Show LEDs in strobe ..."));
         if (is_on) {
-            mgos_universal_clear(leds);
+            mgos_universal_led_clear(leds);
             is_on = false;
         } else {
         
@@ -46,7 +46,7 @@ static void mgos_intern_strobe_loop(mgos_rgbleds* leds)
         mgos_universal_led_show(leds);
         mgos_wdt_feed();
     } else if (pause-- > 0) {
-        mgos_universal_clear(leds);
+        mgos_universal_led_clear(leds);
         mgos_universal_led_show(leds);
         mgos_wdt_feed();
     }
