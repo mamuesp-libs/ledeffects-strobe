@@ -17,7 +17,7 @@ static void mgos_intern_strobe_init(mgos_rgbleds* leds) {
     sd.count = mgos_sys_config_get_ledeffects_strobe_loops();
     sd.pause = mgos_sys_config_get_ledeffects_strobe_pause();
     sd.color = (tools_rgb_data)tools_get_random_color_fade(sd.color, &sd.color, 1, 30.0, 1.0, mgos_sys_config_get_ledeffects_strobe_value());
-    sd.out_pix = mgos_rgbleds_lookup_gamma(leds, sd.color);
+    sd.out_pix = mgos_universal_led_lookup_gamma(leds, sd.color);
 }
 
 static void mgos_intern_strobe_loop(mgos_rgbleds* leds)
@@ -36,18 +36,18 @@ static void mgos_intern_strobe_loop(mgos_rgbleds* leds)
     if (loops-- > 0) {
         LOG(LL_VERBOSE_DEBUG, ("Show LEDs in strobe ..."));
         if (is_on) {
-            mgos_rgbleds_clear(leds);
+            mgos_universal_clear(leds);
             is_on = false;
         } else {
         
-            mgos_rgbleds_set_all(leds, sd.out_pix);
+            mgos_universal_led_set_all(leds, sd.out_pix);
             is_on = true;
         }
-        mgos_rgbleds_show(leds);
+        mgos_universal_led_show(leds);
         mgos_wdt_feed();
     } else if (pause-- > 0) {
-        mgos_rgbleds_clear(leds);
-        mgos_rgbleds_show(leds);
+        mgos_universal_clear(leds);
+        mgos_universal_led_show(leds);
         mgos_wdt_feed();
     }
 }
