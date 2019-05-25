@@ -79,7 +79,7 @@ void mgos_ledeffects_strobe(void* param, mgos_rgbleds_action action)
     }
 }
 
-bool mgos_strobe_init(void) {
+bool mgos_ledeffects_strobe_init(void) {
   LOG(LL_INFO, ("mgos_strobe_init ..."));
   ledmaster_add_effect("ANIM_STROBE", mgos_ledeffects_strobe);
   return true;
